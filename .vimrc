@@ -1,11 +1,12 @@
 syntax on                                                                        
 filetype indent on                                                               
-set shiftwidth=4                                                                 
-set expandtab                                                                    
+set shiftwidth=2                                                                 
+set expandtab 
+set tabstop=2
 set nu  " line number                                                            
                                                                                  
 " 80 char limit                                                                  
-set colorcolumn=81                                                               
+set colorcolumn=121                                                              
                                                                                  
 set nocompatible              " required                                         
 filetype off                  " required                                         
@@ -22,11 +23,15 @@ Plugin 'gmarik/Vundle.vim'
                                                                                  
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
                                                                                  
-Plugin 'Valloric/YouCompleteMe'                                                  
+" Plugin 'Valloric/YouCompleteMe'                                                  
 Plugin 'tmhedberg/SimpylFold'                                                    
+
+Plugin 'nvie/vim-flake8'
                                                                                  
 " All of your Plugins must be added before the following line                    
 call vundle#end()            " required                                          
 filetype plugin indent on    " required                                          
                                                                                  
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+autocmd BufWritePost *.py call Flake8()
+
+" map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
